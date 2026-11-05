@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>나의 영화 티어리스트</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f8f7f2;color:#24251f;font-family:system-ui,-apple-system,sans-serif}main{max-width:1180px;margin:auto;padding:40px 24px}header{display:flex;justify-content:space-between;align-items:center;gap:12px}h1{font-size:clamp(24px,4vw,38px);letter-spacing:-1.5px;margin:8px 0}p{color:#64665b;line-height:1.6}.eyebrow{font-size:12px;letter-spacing:3px;color:#747665}button,input,select{font:inherit}button{cursor:pointer;border:1px solid #d7d9ce;background:#fff;border-radius:10px;padding:11px 15px;color:#27291f}button:hover{background:#efefe5}button:disabled{opacity:.35;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #887512;outline-offset:3px}.primary{background:#303528;color:white;border-color:#303528}.primary:hover{background:#4d5540}form.search{display:flex;gap:8px;margin-top:28px}input{min-width:0;width:100%;padding:14px;border:1px solid #d7d9ce;border-radius:11px;background:#fff}#status{min-height:26px;font-size:14px;margin:9px 0}.panel{border:1px solid #e0e1d7;background:#fff;border-radius:18px;padding:20px;margin-bottom:24px}h2{font-size:16px;margin:0 0 15px}.shelf{display:flex;align-items:center;gap:10px}.cards{display:flex;gap:12px;min-height:176px;padding:4px;align-items:flex-start}.shelf .cards{overflow:auto;flex:1;scrollbar-width:thin}.card{width:92px;flex:0 0 92px;padding:0;border:0;background:transparent;text-align:left;border-radius:8px}.poster{width:92px;height:132px;background:#e5e5df;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;padding:8px;color:#55594d}.poster img{width:100%;height:100%;object-fit:cover}.poster:has(img){padding:0}.title{font-size:12px;font-weight:650;display:block;margin-top:7px;line-height:1.4;overflow-wrap:anywhere}.card:hover{background:transparent;transform:translateY(-2px)}.empty{font-size:13px;color:#686c60;margin:auto;padding:24px 5px}.board{padding:24px 0}.row{margin:0 auto 9px;display:flex;border:1px solid #d4be5f;border-radius:13px;min-height:179px;transition:background .2s}.rank{font-size:32px;font-weight:800;width:62px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-right:1px solid #b6a04655}.row .cards{flex:1;flex-wrap:wrap;padding:12px;min-width:0}.over{outline:3px dashed #6b6419;outline-offset:2px}.row[data-tier=S]{width:60%;background:#FFFDE7}.row[data-tier=A]{width:70%;background:#FFF176}.row[data-tier=B]{width:80%;background:#FFEE58}.row[data-tier=C]{width:90%;background:#FDD835}.row[data-tier=D]{width:100%;background:#F9A825}.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:20px 0}footer{text-align:center;font-size:12px;color:#777b6d;line-height:1.8;margin-top:32px}#results{display:flex;gap:16px;overflow:auto;padding:10px 0}#results:empty{display:none}.result{width:125px;flex:0 0 125px}.result button{font-size:12px;width:100%;margin-top:8px;padding:8px}.result .poster{width:100%;height:166px}dialog{border:1px solid #d3d6c7;border-radius:18px;padding:26px;width:min(440px,calc(100% - 32px));color:#24251f}dialog::backdrop{background:#18201188}dialog h2{font-size:21px}dialog button{margin:6px 3px}dialog p{font-size:14px}select{width:100%;padding:12px;margin:10px 0;border-radius:8px}.danger{color:#a32525}#count{font-weight:400;color:#707568;font-size:13px;margin-left:8px}@media(max-width:600px){main{padding:24px 12px}.panel{padding:14px}.row[data-tier]{width:100%}.rank{width:42px;font-size:26px}.row .cards{padding:8px;gap:8px}.card{width:75px;flex-basis:75px}.poster{width:75px;height:108px}.shelf>button{padding:9px 6px;font-size:12px}.board{padding:12px 0}.row{min-height:150px}header>button{padding:10px}.eyebrow{letter-spacing:2px}}
+</style>
+<style>
+/* 책갈피 UI만 추가합니다. 기존 티어/포스터/반응형 스타일은 유지합니다. */
+.bookmark-panel{margin-top:24px;margin-bottom:12px;background:#fffef8}
+.bookmark-heading,.bookmark-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.bookmark-heading h2{margin:0}
+.bookmark-tabs{display:flex;align-items:stretch;gap:8px;padding:13px 1px 10px;overflow-x:auto;scrollbar-width:thin}
+.bookmark-tab{min-width:100px;max-width:220px;flex:0 0 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-radius:11px;background:#f3f2e8;color:#575a4a}
+.bookmark-tab[aria-current="page"]{background:#303528;border-color:#303528;color:white;font-weight:700}
+.bookmark-tab[aria-current="page"]:hover{background:#4d5540}
+.bookmark-meta{border-top:1px solid #eeeee4;padding-top:12px;font-size:13px;color:#656a5d}
+.bookmark-meta strong{font-size:15px;color:#292e20;overflow-wrap:anywhere}
+.bookmark-meta .mini-actions{display:flex;gap:6px;flex-wrap:wrap}
+.bookmark-meta button{padding:7px 10px;font-size:12px}
+.bookmark-panel .bookmark-hint{font-size:12px;margin:10px 0 0}
+.bookmark-form{display:grid;gap:12px}
+.bookmark-form label{font-size:14px;font-weight:650}
+.bookmark-form .form-actions{display:flex;justify-content:flex-end;gap:8px}
+.choice-actions{display:grid;gap:6px}
+.choice-actions button{width:100%;margin:2px 0;text-align:left}
+.choice-actions p{margin:0 0 10px 2px;font-size:12px;color:#666d60}
+@media(max-width:600px){.bookmark-panel{margin-top:16px}.bookmark-heading{align-items:flex-start}.bookmark-tab{max-width:160px;min-width:85px}}
+</style>
+<main><header><div><div class="eyebrow">나만의 영화 기록</div><h1>🎬 나의 영화 티어리스트</h1></div><button id="settings" aria-label="API 키 설정">⚙️ 설정</button></header><p>마음에 남은 영화들을, 나만의 등급으로.<br>카드를 끌어 놓거나 눌러서 등급을 정해 보세요.</p>
+<section class="panel bookmark-panel" aria-label="티어리스트 책갈피 관리"><div class="bookmark-heading"><h2>📚 티어리스트 책갈피</h2><button id="addBookmark" class="primary" type="button">＋ 새 책갈피</button></div><nav id="bookmarkTabs" class="bookmark-tabs" aria-label="책갈피 선택"></nav><div class="bookmark-meta"><span>선택한 책갈피: <strong id="bookmarkName"></strong></span><div class="mini-actions"><button id="renameBookmark" type="button">이름 변경</button><button id="removeBookmark" type="button" class="danger">책갈피 삭제</button></div></div><p class="bookmark-hint">책갈피마다 영화 목록과 등급이 따로 저장됩니다. 새 책갈피에는 처음 영화 10편이 미분류로 들어갑니다.</p></section>
+<form class="search" id="search"><input id="query" aria-label="영화 제목" placeholder="어떤 영화를 보셨나요?" maxlength="150"><button class="primary" id="searchBtn">검색</button></form><p id="status" role="status" aria-live="polite"></p><div id="results"></div>
+<section class="panel" id="pool"><h2>추가한 영화 목록 <span id="count"></span></h2><div class="shelf"><button id="prev" aria-label="이전 영화">◀ 더보기</button><div class="cards" id="unranked"></div><button id="next" aria-label="다음 영화">더보기 ▶</button></div></section>
+<section id="board" class="board" aria-label="영화 등급표"></section><div class="actions"><button id="save">💾 파일 저장</button><button id="load">📂 불러오기</button><button id="png">🖼️ 이미지 저장</button></div><input id="file" type="file" accept="application/json,.json" hidden><footer>변경 내용은 이 브라우저에 자동 저장됩니다. 중요한 기록은 파일로 보관해 주세요.<br>검색·포스터 로딩은 인터넷 연결이 필요합니다. API 키는 백업 파일에 포함되지 않습니다.<br>영화 정보 제공: TMDB · 이 서비스는 TMDB의 보증 또는 인증을 받지 않았습니다.</footer></main>
+<dialog id="config"><h2>TMDB API 키 설정</h2><p>본인의 API 키(v3)를 입력해 주세요. 키는 이 브라우저에만 저장되며 다른 기기로 자동 전달되지 않습니다.</p><input id="key" type="password" autocomplete="off" aria-label="TMDB API 키 v3" placeholder="API 키(v3)"><p>공용 기기에서는 사용 후 키를 지워 주세요. 영화 기록 파일에는 키가 들어가지 않습니다.</p><button id="keySave" class="primary">저장</button><button id="keyClear">키 지우기</button><button data-close="config">닫기</button></dialog>
+<dialog id="bookmarkEditor"><h2 id="bookmarkEditorTitle">책갈피 추가</h2><form id="bookmarkForm" class="bookmark-form"><label for="bookmarkInput">책갈피 제목</label><input id="bookmarkInput" maxlength="60" required placeholder="예: 다시 보고 싶은 영화" autocomplete="off"><div class="form-actions"><button type="button" data-close="bookmarkEditor">취소</button><button type="submit" class="primary">저장</button></div></form></dialog>
+<dialog id="edit"><h2 id="editTitle"></h2><label for="tierSelect">영화 등급</label><select id="tierSelect"><option value="">추가한 영화 목록</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option></select><button id="move" class="primary">변경</button><button id="delete" class="danger">영화 삭제</button><button data-close="edit">닫기</button></dialog>
+<dialog id="saveChoice"><h2>파일 저장 방식 선택</h2><p>어느 영화 기록을 저장할까요?</p><div class="choice-actions"><button id="saveCurrent" class="primary" type="button">현재 책갈피만 저장</button><p>선택한 책갈피의 영화와 등급만 JSON 파일로 저장합니다.</p><button id="saveAll" type="button">전체 책갈피 저장</button><p>모든 책갈피와 영화·등급을 한 파일에 저장합니다.</p></div><button data-close="saveChoice" type="button">취소</button></dialog>
+<dialog id="import"><h2>기록 불러오기</h2><p id="importNote">선택한 파일을 어떤 방식으로 불러올까요?</p><div class="choice-actions"><button id="backupImport" class="primary" type="button">💾 저장 후 불러오기</button><p>현재 전체 책갈피를 먼저 백업하고, 파일의 기록으로 교체합니다.</p><button id="plainImport" type="button">📂 그냥 불러오기</button><p>백업 없이 파일의 기록으로 교체합니다. 교체 전 확인합니다.</p><button id="bookmarkImport" type="button">📚 책갈피로 불러오기</button><p>기존 책갈피는 유지하고, 파일의 기록을 새로운 책갈피로 추가합니다.</p></div><button data-close="import" type="button">취소</button></dialog>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),tiers=['S','A','B','C','D'],storage='movie.tierlist.standalone.v6.bookmarks',legacyStorage='movie.tierlist.standalone.v5',keyStorage='movie.tmdb.v3.key',seeds=['해바라기','내 머리 속의 지우개','기생충','인터스텔라','라라랜드','센과 치히로의 행방불명','어벤져스','범죄도시','타이타닉','조커'];let movies=[],bookmarks=[],activeBookmarkId='',apiKey='',active=null,dragged=null,pending=null,searchSeq=0,editorMode='add';
+const notice=t=>$('status').textContent=t;const norm=t=>t.normalize('NFKC').replace(/\s/g,'').toLocaleLowerCase();const uid=()=>globalThis.crypto?.randomUUID?.()||Date.now()+'-'+Math.random().toString(36).slice(2);
+const correctTitle=t=>norm(t)===norm('내 머릿속의 지우개')?'내 머리 속의 지우개':t;
+const releaseYear=date=>typeof date==='string'&&/^\d{4}/.test(date)?date.slice(0,4):'';
+const movieTitle=m=>m.title+(m.year?' ('+m.year+')':'');
+function sameMovie(m,r){
+ if(Number.isSafeInteger(m.tmdbId)&&Number.isSafeInteger(r.id))return m.tmdbId===r.id;
+ if(norm(m.title)!==norm(r.title))return false;
+ const year=releaseYear(r.release_date);
+ return !!((m.year&&year&&m.year===year)||(m.poster&&r.poster_path&&m.poster===r.poster_path));
+}
+function validate(data){if(!Array.isArray(data)||data.length>2000)throw Error('영화 목록 형식이 올바르지 않습니다.');let seen=new Set();return data.map(m=>{if(!m||typeof m.title!=='string'||!m.title.trim()||m.title.length>200||!['',...tiers].includes(m.tier??''))throw Error('영화 데이터가 올바르지 않습니다.');let title=correctTitle(m.title.trim()),year=releaseYear(m.year),tmdbId=Number.isSafeInteger(m.tmdbId)?m.tmdbId:null;let identity=tmdbId!==null?'tmdb:'+tmdbId:'title:'+norm(title)+'|'+year;if(seen.has(identity))throw Error('중복 영화가 있습니다.');seen.add(identity);return {id:uid(),title,tier:m.tier||'',poster:typeof m.poster==='string'&&/^\/[a-zA-Z0-9._/-]+$/.test(m.poster)?m.poster:null,tmdbId,year}})}
+const defaultMovies=()=>seeds.map(title=>({id:uid(),title,tier:'',poster:null,tmdbId:null,year:''}));
+const newBookmark=(name,entries=defaultMovies())=>({id:uid(),name,movies:entries});
+const currentBookmark=()=>bookmarks.find(b=>b.id===activeBookmarkId);
+function validateWorkspace(data){
+ if(!data||!Array.isArray(data.bookmarks)||!data.bookmarks.length||data.bookmarks.length>100)throw Error('책갈피 데이터 형식이 올바르지 않습니다.');
+ const ids=new Set(),restored=data.bookmarks.map(b=>{
+  if(!b||typeof b.id!=='string'||!b.id.trim()||b.id.length>128||ids.has(b.id)||typeof b.name!=='string'||!b.name.trim()||b.name.trim().length>60)throw Error('책갈피 이름 또는 ID가 올바르지 않습니다.');
+  ids.add(b.id);return {id:b.id,name:b.name.trim(),movies:validate(b.movies)};
+ });
+ return {bookmarks:restored,activeBookmarkId:ids.has(data.activeBookmarkId)?data.activeBookmarkId:restored[0].id};
+}
+try{
+ apiKey=localStorage.getItem(keyStorage)||'';
+ const saved=localStorage.getItem(storage);
+ if(saved){const restored=validateWorkspace(JSON.parse(saved));bookmarks=restored.bookmarks;activeBookmarkId=restored.activeBookmarkId}
+ else{
+  // 이전 원본(v5)의 저장값은 수정하거나 삭제하지 않고 새 구조로 복사합니다.
+  const old=localStorage.getItem(legacyStorage);
+  const initialMovies=old?validate(JSON.parse(old).movies):defaultMovies();
+  const first=newBookmark('나의 영화',initialMovies);bookmarks=[first];activeBookmarkId=first.id;
+ }
+}catch(e){notice('저장된 기록을 읽지 못했습니다. 원본 저장값은 유지합니다. 백업 파일을 불러와 주세요.');const first=newBookmark('나의 영화');bookmarks=[first];activeBookmarkId=first.id}
+movies=currentBookmark().movies;
+function persist(){try{localStorage.setItem(storage,JSON.stringify({version:2,activeBookmarkId,bookmarks}))}catch(e){notice('자동 저장이 불가능합니다. 파일 저장으로 기록을 보관해 주세요.')}}
+function renderBookmarks(){
+ const holder=$('bookmarkTabs');holder.replaceChildren();
+ for(const bookmark of bookmarks){
+  const button=document.createElement('button');button.type='button';button.className='bookmark-tab';button.textContent=bookmark.name;
+  button.title=bookmark.name;button.setAttribute('aria-current',bookmark.id===activeBookmarkId?'page':'false');
+  button.onclick=()=>selectBookmark(bookmark.id);holder.append(button);
+ }
+ $('bookmarkName').textContent=currentBookmark().name;
+ $('removeBookmark').disabled=bookmarks.length===1;
+}
+function selectBookmark(id){
+ const selected=bookmarks.find(b=>b.id===id);if(!selected||id===activeBookmarkId)return;
+ activeBookmarkId=id;movies=selected.movies;active=null;dragged=null;++searchSeq;
+ $('results').replaceChildren();$('query').value='';$('searchBtn').disabled=false;
+ persist();render();notice('「'+selected.name+'」 책갈피로 전환했습니다.');
+ if(apiKey&&movies.some(m=>!m.poster||!m.year))hydrate();
+}
+function openBookmarkEditor(mode){
+ editorMode=mode;$('bookmarkEditorTitle').textContent=mode==='add'?'새 책갈피 만들기':'책갈피 이름 변경';
+ $('bookmarkInput').value=mode==='add'?'':currentBookmark().name;
+ $('bookmarkEditor').showModal();$('bookmarkInput').focus();
+}
+$('addBookmark').onclick=()=>openBookmarkEditor('add');
+$('renameBookmark').onclick=()=>openBookmarkEditor('rename');
+$('bookmarkForm').onsubmit=e=>{
+ e.preventDefault();const name=$('bookmarkInput').value.trim();
+ if(!name)return alert('책갈피 제목을 입력해 주세요.');
+ if(bookmarks.some(b=>b.name.toLocaleLowerCase()===name.toLocaleLowerCase()&&(editorMode==='add'||b.id!==activeBookmarkId)))return alert('이미 같은 제목의 책갈피가 있습니다. 다른 이름을 입력해 주세요.');
+ if(editorMode==='add'){
+  if(bookmarks.length>=100)return alert('책갈피는 최대 100개까지 만들 수 있습니다.');
+  const created=newBookmark(name);bookmarks.push(created);activeBookmarkId=created.id;movies=created.movies;
+  active=null;dragged=null;++searchSeq;$('results').replaceChildren();$('query').value='';$('searchBtn').disabled=false;
+ }else currentBookmark().name=name;
+ $('bookmarkEditor').close();persist();render();notice('「'+name+'」 책갈피를 저장했습니다.');
+ if(editorMode==='add'&&apiKey&&movies.some(m=>!m.poster||!m.year))hydrate();
+};
+$('removeBookmark').onclick=()=>{
+ if(bookmarks.length===1)return notice('마지막 책갈피는 삭제할 수 없습니다.');
+ const name=currentBookmark().name;
+ if(!confirm('「'+name+'」 책갈피와 그 안의 영화 기록을 삭제할까요? 다른 책갈피는 그대로 남습니다.'))return;
+ bookmarks=bookmarks.filter(b=>b.id!==activeBookmarkId);activeBookmarkId=bookmarks[0].id;movies=bookmarks[0].movies;
+ active=null;dragged=null;++searchSeq;$('results').replaceChildren();$('query').value='';$('searchBtn').disabled=false;
+ persist();render();notice('「'+name+'」 책갈피를 삭제했습니다.');
+ if(apiKey&&movies.some(m=>!m.poster||!m.year))hydrate();
+};
+function poster(m){let el=document.createElement('div');el.className='poster';el.textContent=m.title;if(m.poster){let img=new Image();img.alt=m.title+' 포스터';img.loading='lazy';img.referrerPolicy='no-referrer';img.src='https://image.tmdb.org/t/p/w342'+m.poster;img.onerror=()=>{el.textContent=m.title};el.replaceChildren(img);exportPoster(img.src).catch(()=>{})}return el}
+function card(m){
+ let b=document.createElement('button');b.className='card';b.draggable=true;b.setAttribute('aria-label',movieTitle(m)+' 등급 변경 또는 삭제');b.append(poster(m));
+ let t=document.createElement('span');t.className='title';t.textContent=movieTitle(m);b.append(t);
+ b.onclick=()=>{active=m.id;$('editTitle').textContent=movieTitle(m);$('tierSelect').value=m.tier;$('edit').showModal()};
+ b.ondragstart=e=>{dragged=m.id;e.dataTransfer.setData('text/plain',m.id);e.dataTransfer.effectAllowed='move'};
+ b.ondragend=()=>{dragged=null;document.querySelectorAll('.over').forEach(e=>e.classList.remove('over'))};
+ // 다른 카드 위에 놓으면 해당 카드 바로 앞으로 이동합니다. 같은 티어 안에서도 순서를 바꿀 수 있습니다.
+ b.ondragover=e=>{e.preventDefault();e.stopPropagation();b.classList.add('over')};
+ b.ondragleave=e=>{b.classList.remove('over')};
+ b.ondrop=e=>{
+  e.preventDefault();e.stopPropagation();b.classList.remove('over');
+  const from=movies.findIndex(x=>x.id===(dragged||e.dataTransfer.getData('text/plain')));
+  if(from<0||movies[from].id===m.id)return;
+  const moved=movies.splice(from,1)[0],to=movies.findIndex(x=>x.id===m.id);moved.tier=m.tier;
+  movies.splice(to,0,moved);persist();render();
+ };
+ return b;
+}
+function target(el,tier){el.ondragover=e=>{e.preventDefault();el.classList.add('over')};el.ondragleave=e=>{if(!el.contains(e.relatedTarget))el.classList.remove('over')};el.ondrop=e=>{e.preventDefault();el.classList.remove('over');let m=movies.find(x=>x.id===(dragged||e.dataTransfer.getData('text/plain')));if(m){m.tier=tier;persist();render()}}}
+function fill(el,list,hint){el.replaceChildren(...list.map(card));if(!list.length){let p=document.createElement('div');p.className='empty';p.textContent=hint;el.append(p)}}
+function render(){renderBookmarks();fill($('unranked'),movies.filter(x=>!x.tier),'검색으로 영화를 추가해 보세요');$('count').textContent=movies.filter(x=>!x.tier).length+'편';$('board').replaceChildren();tiers.forEach(t=>{let r=document.createElement('div');r.className='row';r.dataset.tier=t;r.setAttribute('aria-label',t+' 등급');let l=document.createElement('div');l.className='rank';l.textContent=t;let c=document.createElement('div');c.className='cards';fill(c,movies.filter(m=>m.tier===t),'여기에 영화를 놓아 주세요');r.append(l,c);target(r,t);$('board').append(r)});requestAnimationFrame(scrollButtons)}
+target($('pool'),'');function scrollButtons(){let e=$('unranked');$('prev').disabled=e.scrollLeft<=1;$('next').disabled=e.scrollLeft+e.clientWidth>=e.scrollWidth-2}$('unranked').onscroll=scrollButtons;window.addEventListener('resize',scrollButtons);$('prev').onclick=()=>$('unranked').scrollBy({left:-300,behavior:'smooth'});$('next').onclick=()=>$('unranked').scrollBy({left:300,behavior:'smooth'});
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>$(b.dataset.close).close());$('settings').onclick=()=>{$('key').value=apiKey;$('config').showModal()};$('keyClear').onclick=()=>{apiKey='';$('key').value='';try{localStorage.removeItem(keyStorage)}catch{}notice('API 키를 지웠습니다.')};$('keySave').onclick=()=>{let k=$('key').value.trim();if(!/^[a-fA-F0-9]{32}$/.test(k)){alert('32자리 API 키(v3)를 입력해 주세요. 읽기 접근 토큰(v4)은 사용할 수 없습니다.');return}apiKey=k;try{localStorage.setItem(keyStorage,k)}catch{notice('키를 저장할 수 없어 이번 실행 중에만 사용합니다.')}$('config').close();hydrate()};
+async function request(q){let url=new URL('https://api.themoviedb.org/3/search/movie');url.search=new URLSearchParams({api_key:apiKey,language:'ko-KR',query:correctTitle(q),include_adult:'false'});let r;try{r=await fetch(url,{signal:AbortSignal.timeout(15000)})}catch{throw Error('네트워크 오류가 발생했습니다. 인터넷 연결을 확인해주세요.')}let d=await r.json();if(!r.ok)throw Error(r.status===401?'인증 실패: '+(d.status_message||'키 확인 필요')+' · 설정에는 ‘API 키(v3)’를 입력해 주세요.':'검색에 실패했습니다. 잠시 후 다시 시도해 주세요.');return d.results||[]}
+async function hydrate(){
+ const bookmarkId=activeBookmarkId,targetMovies=movies;notice('초기 영화의 포스터를 가져오는 중입니다…');let failed=0,changed=false;
+ for(let m of targetMovies.filter(x=>!x.poster||!x.year)){
+  if(bookmarkId!==activeBookmarkId)break;
+  try{let results=await request(m.title);if(bookmarkId!==activeBookmarkId)break;let r=results.find(x=>x.id===m.tmdbId)||results.find(x=>norm(x.title)===norm(m.title))||results[0];if(r&&targetMovies.includes(m)){if(!m.poster)m.poster=r.poster_path;if(!m.tmdbId)m.tmdbId=r.id;if(!m.year)m.year=releaseYear(r.release_date);changed=true}}
+  catch(e){if(bookmarkId===activeBookmarkId)notice(e.message);failed++;break}
+ }
+ if(changed)persist();if(bookmarkId===activeBookmarkId){render();if(!failed)notice('설정과 포스터를 저장했습니다.')}
+}
+$('search').onsubmit=async e=>{e.preventDefault();let q=$('query').value.trim();if(!q)return notice('영화 제목을 입력해주세요');if(!apiKey)return notice('먼저 ⚙️ 설정에서 TMDB API 키를 입력해주세요.');let seq=++searchSeq,searchBookmarkId=activeBookmarkId;$('searchBtn').disabled=true;notice('영화를 찾고 있습니다…');$('results').replaceChildren();try{let results=await request(q);if(seq!==searchSeq||searchBookmarkId!==activeBookmarkId)return;notice(results.length?'검색 결과에서 영화를 목록에 추가해 주세요.':'검색 결과가 없습니다. 다른 제목으로 검색해 주세요.');for(let r of results){let box=document.createElement('div');box.className='result';box.append(poster({title:r.title,poster:r.poster_path}));let t=document.createElement('span');t.className='title';t.textContent=r.title+(r.release_date?' ('+r.release_date.slice(0,4)+')':'');let b=document.createElement('button');b.textContent='목록에 추가';b.onclick=()=>{if(searchBookmarkId!==activeBookmarkId)return notice('책갈피가 변경되었습니다. 다시 검색해 주세요.');if(movies.some(m=>sameMovie(m,r)))return notice('이미 추가된 영화입니다');movies.push({id:uid(),title:r.title,tier:'',poster:r.poster_path,tmdbId:r.id,year:releaseYear(r.release_date)});persist();render();notice(r.title+' · 목록에 추가했습니다.')};box.append(t,b);$('results').append(box)}}catch(e){if(searchBookmarkId===activeBookmarkId)notice(e.message)}finally{if(searchBookmarkId===activeBookmarkId)$('searchBtn').disabled=false}};
+$('move').onclick=()=>{let m=movies.find(x=>x.id===active);if(m)m.tier=$('tierSelect').value;persist();render();$('edit').close()};$('delete').onclick=()=>{if(confirm('이 영화를 삭제할까요?')){const pos=movies.findIndex(x=>x.id===active);if(pos!==-1)movies.splice(pos,1);persist();render();$('edit').close()}};
+function download(blob,name){let a=document.createElement('a'),u=URL.createObjectURL(blob);a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),10000)}
+const safeFilename=t=>t.replace(/[\\/:*?"<>|\x00-\x1f]/g,'_').slice(0,50)||'영화';
+function dateStamp(){
+ const parts=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+ const get=type=>parts.find(p=>p.type===type).value;
+ return get('year')+'-'+get('month')+'-'+get('day');
+}
+const datedFilename=(label,extension)=>dateStamp()+'_'+safeFilename(label)+'.'+extension;
+function backup(scope='all'){
+ const current=currentBookmark();
+ const data=scope==='current'
+  ?{version:2,format:'single-bookmark',name:current.name,movies:current.movies}
+  :{version:2,activeBookmarkId,bookmarks};
+ const name=datedFilename(scope==='current'?current.name:'전체책갈피','json');
+ download(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),name);
+}
+$('save').onclick=()=>$('saveChoice').showModal();
+$('saveCurrent').onclick=()=>{backup('current');$('saveChoice').close();notice('현재 책갈피 「'+currentBookmark().name+'」의 저장 파일을 다운로드했습니다.')};
+$('saveAll').onclick=()=>{backup('all');$('saveChoice').close();notice('전체 책갈피 저장 파일을 다운로드했습니다.')};
+$('load').onclick=()=>{$('file').value='';$('file').click()};
+$('file').onchange=async()=>{
+ let f=$('file').files[0];if(!f)return;
+ try{
+  if(f.size>20e6)throw Error('20MB 이하의 파일만 불러올 수 있습니다.');
+  let data=JSON.parse(await f.text());
+  if(Array.isArray(data.bookmarks)){
+   pending={type:'all',state:validateWorkspace(data)};
+   $('importNote').textContent='전체 책갈피 파일입니다. 불러오기 방식을 선택해 주세요. 교체를 선택하면 현재 모든 책갈피가 교체됩니다.';
+  }else{
+   const fallback=typeof f.name==='string'?f.name.replace(/\.json$/i,'').trim():'';
+   const name=typeof data.name==='string'&&data.name.trim()?data.name.trim().slice(0,60):(fallback.slice(0,60)||'불러온 영화');
+   pending={type:'current',name,movies:validate(data.movies)};
+   $('importNote').textContent='단일 책갈피 파일입니다. 교체를 선택하면 현재 「'+currentBookmark().name+'」의 영화 목록만 교체됩니다.';
+  }
+  $('import').showModal();
+ }catch(e){pending=null;notice('불러오기 실패: '+e.message)}
+};
+function importNow(withBackup){
+ if(!pending)return;
+ if(withBackup)backup();
+ const message=pending.type==='all'?'현재 모든 책갈피와 영화 기록이 교체됩니다. 계속하시겠습니까?':'현재 책갈피의 영화 목록이 교체됩니다. 계속하시겠습니까?';
+ if(!confirm(message))return;
+ if(pending.type==='all'){
+  bookmarks=pending.state.bookmarks;activeBookmarkId=pending.state.activeBookmarkId;movies=currentBookmark().movies;
+ }else{currentBookmark().movies=pending.movies;movies=currentBookmark().movies}
+ pending=null;active=null;dragged=null;++searchSeq;$('results').replaceChildren();$('searchBtn').disabled=false;
+ persist();render();$('import').close();notice('기록을 불러왔습니다.');
+ if(apiKey&&movies.some(m=>!m.poster||!m.year))hydrate();
+}
+$('backupImport').onclick=()=>importNow(true);$('plainImport').onclick=()=>importNow(false);
+function uniqueBookmarkName(base){
+ const first=(base||'불러온 영화').trim().slice(0,60)||'불러온 영화';let name=first,n=2;
+ while(bookmarks.some(b=>b.name.toLocaleLowerCase()===name.toLocaleLowerCase())){
+  const suffix=' ('+n+++')';name=first.slice(0,60-suffix.length)+suffix;
+ }
+ return name;
+}
+function importAsBookmarks(){
+ if(!pending)return;
+ const incoming=pending.type==='all'?pending.state.bookmarks:[{name:pending.name,movies:pending.movies}];
+ if(bookmarks.length+incoming.length>100)return alert('책갈피는 최대 100개까지 만들 수 있습니다. 기존 기록은 그대로 유지했습니다.');
+ let firstAdded=null;
+ for(const item of incoming){
+  const added={id:uid(),name:uniqueBookmarkName(item.name),movies:item.movies};
+  bookmarks.push(added);if(!firstAdded)firstAdded=added;
+ }
+ activeBookmarkId=firstAdded.id;movies=firstAdded.movies;
+ pending=null;active=null;dragged=null;++searchSeq;$('results').replaceChildren();$('query').value='';$('searchBtn').disabled=false;
+ persist();render();$('import').close();notice(incoming.length+'개의 책갈피를 새로 추가했습니다. 기존 책갈피는 그대로 유지했습니다.');
+ if(apiKey&&movies.some(m=>!m.poster||!m.year))hydrate();
+}
+$('bookmarkImport').onclick=importAsBookmarks;
+const posterCache=new Map();
+async function exportPoster(url){
+ if(posterCache.has(url))return posterCache.get(url);
+ const task=(async()=>{
+  let lastError;
+  for(let attempt=0;attempt<2;attempt++){
+   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),20000);
+   let localURL;
+   try{
+    const response=await fetch(url,{mode:'cors',credentials:'omit',referrerPolicy:'no-referrer',cache:attempt?'reload':'default',signal:controller.signal});
+    if(!response.ok||response.type==='opaque')throw Error('포스터 응답 오류');
+    const blob=await response.blob();
+    if(!blob.size||!blob.type.startsWith('image/'))throw Error('포스터 형식 오류');
+    localURL=URL.createObjectURL(blob);
+    const image=await new Promise((resolve,reject)=>{
+     const img=new Image(),decodeTimer=setTimeout(()=>reject(Error('포스터 해석 시간 초과')),15000);
+     img.onload=()=>{clearTimeout(decodeTimer);img.naturalWidth?resolve(img):reject(Error('빈 포스터'))};
+     img.onerror=()=>{clearTimeout(decodeTimer);reject(Error('포스터 해석 실패'))};img.src=localURL;
+    });
+    // Blob URL은 해석 완료 후 해제해도 이미지 픽셀은 유지됩니다.
+    return image;
+   }catch(error){lastError=error}finally{clearTimeout(timer);if(localURL)URL.revokeObjectURL(localURL)}
+  }
+  throw lastError;
+ })();
+ posterCache.set(url,task);
+ try{return await task}catch(error){posterCache.delete(url);throw error}
+}
+async function preparePosters(items){
+ const images=new Map(),failed=[];let cursor=0,done=0;
+ const urls=[...new Set(items.map(m=>m.poster).filter(Boolean))];
+ await Promise.all(Array.from({length:Math.min(4,urls.length)},async()=>{
+  while(cursor<urls.length){const url=urls[cursor++];try{images.set(url,await exportPoster(url))}catch(error){failed.push(url)}
+   done++;notice('포스터 준비 중… '+done+' / '+urls.length);
+  }
+ }));
+ return{images,failed};
+}
+
+
+$('png').onclick=async()=>{
+ const btn=$('png'),bookmarkTitle=currentBookmark().name;btn.disabled=true;notice('이미지를 만들고 있습니다…');
+ try{
+  const snapshot=movies.map(m=>({...m})),assigned=snapshot.filter(m=>m.tier);
+  const prepared=await preparePosters(assigned.filter(m=>m.poster).map(m=>({...m,poster:'https://image.tmdb.org/t/p/w342'+m.poster})));
+  // TMDB의 이미지 서버에 접근할 수 없어도 이미지 저장 자체는 유지하고, 제목 카드로 대체합니다.
+  const missing=assigned.filter(m=>!m.poster||!prepared.images.has('https://image.tmdb.org/t/p/w342'+m.poster));
+  if(document.fonts?.ready)await document.fonts.ready;
+  const w=1200,gap=10,cw=96,ch=165;
+  const sizes=tiers.map((t,i)=>{const rw=w*(.60+i*.10),cols=Math.max(1,Math.floor((rw-85)/(cw+gap)));return {rw,cols,h:Math.max(190,Math.ceil(snapshot.filter(m=>m.tier===t).length/cols)*ch+24)}});
+  const canvas=document.createElement('canvas');canvas.width=w+64;canvas.height=100+sizes.reduce((s,r)=>s+r.h+10,0)+30;
+  if(canvas.height>30000)throw Error('영화가 너무 많아 한 장에 저장할 수 없습니다.');
+  const ctx=canvas.getContext('2d');if(!ctx)throw Error('캔버스를 사용할 수 없습니다.');
+  ctx.fillStyle='#f8f7f2';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#25281d';ctx.font='bold 32px system-ui';ctx.fillText(bookmarkTitle+' · 영화 티어리스트',32,55,w);
+  let y=90;const colors=['#FFFDE7','#FFF176','#FFEE58','#FDD835','#F9A825'];
+  const images=new Map(assigned.map(m=>[m.id,prepared.images.get('https://image.tmdb.org/t/p/w342'+m.poster)]));
+  for(let i=0;i<5;i++){
+   const t=tiers[i],r=sizes[i],x=32+(w-r.rw)/2;
+   ctx.fillStyle=colors[i];ctx.fillRect(x,y,r.rw,r.h);ctx.fillStyle='#25281d';ctx.font='bold 35px system-ui';ctx.fillText(t,x+17,y+55);
+   const list=snapshot.filter(m=>m.tier===t);
+   for(let j=0;j<list.length;j++){
+    const m=list[j],px=x+70+(j%r.cols)*(cw+gap),py=y+12+Math.floor(j/r.cols)*ch,img=images.get(m.id);
+    ctx.fillStyle='#dddcd3';ctx.fillRect(px,py,cw,126);
+    if(img)ctx.drawImage(img,px,py,cw,126);
+    else{ctx.fillStyle='#55594d';ctx.font='bold 12px system-ui';ctx.textAlign='center';ctx.fillText(m.title,px+cw/2,py+62,cw-8);ctx.textAlign='left'}
+    ctx.fillStyle='#25281d';ctx.font='12px system-ui';
+    const chars=Array.from(m.title),lines=[];let line='';
+    for(const c of chars){if(ctx.measureText(line+c).width>cw){lines.push(line);line=c}else line+=c}lines.push(line);
+    lines.slice(0,2).forEach((s,k)=>ctx.fillText(s,px,py+142+k*16));
+   }
+   y+=r.h+10;
+  }
+  const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob)throw Error('이미지 생성 실패');
+  download(blob,datedFilename(bookmarkTitle,'png'));
+  notice(missing.length?'이미지를 저장했습니다. 포스터를 가져오지 못한 '+missing.length+'편은 제목 카드로 표시했습니다.':'포스터 '+assigned.length+'편을 포함한 티어리스트 이미지를 저장했습니다.');
+ }catch(e){notice('이미지 저장에 실패했습니다. JSON 파일로 기록을 보관해 주세요.')}finally{btn.disabled=false}
+};
+render();if(!apiKey&&!$('status').textContent)notice('포스터와 검색을 사용하려면 ⚙️ 설정에서 API 키(v3)를 입력해 주세요.');if(apiKey&&movies.some(m=>!m.poster||!m.year))hydrate();
+</script></html>
+
