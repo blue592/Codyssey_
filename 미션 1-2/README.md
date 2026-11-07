@@ -21,3 +21,32 @@
 4. 기타 완성 기준 및 한계는 기록에 적힌 **직접 확인 결과**와 **코드·캡처만으로 확정할 수 없는 부분**을 구분해 읽습니다.
 
 **주의:** 이 미션의 수정 대상은 `영화_수정1.html`입니다. `영화_수정전.html`은 비교용 원본으로 보존하며, 다른 미션의 HTML을 동일한 최신 버전으로 취급하지 않습니다.
+
+<!-- AUTO-FILE-LIST:START -->
+## 현재 파일 목록 (자동 갱신)
+
+이 표는 파일이 추가·삭제·이름 변경될 때 자동으로 갱신됩니다. 위의 설명은 그대로 보존합니다.
+
+| 파일 경로 | 형식 |
+| --- | --- |
+| [대화내역.md](./%EB%8C%80%ED%99%94%EB%82%B4%EC%97%AD.md) | MD |
+| [미션_2_기록.md](./%EB%AF%B8%EC%85%98_2_%EA%B8%B0%EB%A1%9D.md) | MD |
+| [실제검증내역.md](./%EC%8B%A4%EC%A0%9C%EA%B2%80%EC%A6%9D%EB%82%B4%EC%97%AD.md) | MD |
+| [영화_수정1.html](./%EC%98%81%ED%99%94_%EC%88%98%EC%A0%951.html) | HTML |
+| [영화_수정전.html](./%EC%98%81%ED%99%94_%EC%88%98%EC%A0%95%EC%A0%84.html) | HTML |
+| [자료원본/01_수정전_중복판정오류.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/01_%EC%88%98%EC%A0%95%EC%A0%84_%EC%A4%91%EB%B3%B5%ED%8C%90%EC%A0%95%EC%98%A4%EB%A5%98.png) | PNG |
+| [자료원본/01_영화검색과목록추가.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/01_%EC%98%81%ED%99%94%EA%B2%80%EC%83%89%EA%B3%BC%EB%AA%A9%EB%A1%9D%EC%B6%94%EA%B0%80.png) | PNG |
+| [자료원본/01_오류설명과원인.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/01_%EC%98%A4%EB%A5%98%EC%84%A4%EB%AA%85%EA%B3%BC%EC%9B%90%EC%9D%B8.png) | PNG |
+| [자료원본/02_동작비교와재현방법.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/02_%EB%8F%99%EC%9E%91%EB%B9%84%EA%B5%90%EC%99%80%EC%9E%AC%ED%98%84%EB%B0%A9%EB%B2%95.png) | PNG |
+| [자료원본/02_드래그등급이동.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/02_%EB%93%9C%EB%9E%98%EA%B7%B8%EB%93%B1%EA%B8%89%EC%9D%B4%EB%8F%99.png) | PNG |
+| [자료원본/02_수정후_각각추가성공.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/02_%EC%88%98%EC%A0%95%ED%9B%84_%EA%B0%81%EA%B0%81%EC%B6%94%EA%B0%80%EC%84%B1%EA%B3%B5.png) | PNG |
+| [자료원본/03_다시열어도기록유지.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/03_%EB%8B%A4%EC%8B%9C%EC%97%B4%EC%96%B4%EB%8F%84%EA%B8%B0%EB%A1%9D%EC%9C%A0%EC%A7%80.png) | PNG |
+| [자료원본/03_수정요청과적용내용.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/03_%EC%88%98%EC%A0%95%EC%9A%94%EC%B2%AD%EA%B3%BC%EC%A0%81%EC%9A%A9%EB%82%B4%EC%9A%A9.png) | PNG |
+| [자료원본/04_PNG이미지저장.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/04_PNG%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A0%80%EC%9E%A5.png) | PNG |
+| [자료원본/04_기능유지와검증설명.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/04_%EA%B8%B0%EB%8A%A5%EC%9C%A0%EC%A7%80%EC%99%80%EA%B2%80%EC%A6%9D%EC%84%A4%EB%AA%85.png) | PNG |
+| [자료원본/05_파일저장과불러오기.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/05_%ED%8C%8C%EC%9D%BC%EC%A0%80%EC%9E%A5%EA%B3%BC%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0.png) | PNG |
+| [자료원본/06_HTML단독실행.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/06_HTML%EB%8B%A8%EB%8F%85%EC%8B%A4%ED%96%89.png) | PNG |
+| [자료원본/07_좁은화면표시.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/07_%EC%A2%81%EC%9D%80%ED%99%94%EB%A9%B4%ED%91%9C%EC%8B%9C.png) | PNG |
+| [자료원본/08_빈제목입력안내.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/08_%EB%B9%88%EC%A0%9C%EB%AA%A9%EC%9E%85%EB%A0%A5%EC%95%88%EB%82%B4.png) | PNG |
+| [자료원본/09_초기영화전체이동.png](./%EC%9E%90%EB%A3%8C%EC%9B%90%EB%B3%B8/09_%EC%B4%88%EA%B8%B0%EC%98%81%ED%99%94%EC%A0%84%EC%B2%B4%EC%9D%B4%EB%8F%99.png) | PNG |
+<!-- AUTO-FILE-LIST:END -->
