@@ -11,8 +11,8 @@
 | [영화_기능추가1.html](./영화_기능추가1.html) | 책갈피 기능을 처음 추가한 1차 결과물 |
 | [영화_기능추가수정1.html](./영화_기능추가수정1.html) | 저장·불러오기 선택 기능 등을 보완한 최종 수정본 |
 | [미션4_기록.md](./미션4_기록.md) | 1차·수정본의 부족한 점과 조치 내역 |
-| [대화캡쳐 및 실제검증 자료.md](./%EB%8C%80%ED%99%94%EC%BA%A1%EC%B3%90%20%EB%B0%8F%20%EC%8B%A4%EC%A0%9C%EA%B2%80%EC%A6%9D%20%EC%9E%90%EB%A3%8C.md) | 스크린샷 3장과 완성 기준별 검증 체크리스트 |
-| [사진원본 폴더](./사진원본/) | 주요 대화·수정 결과 화면의 원본 PNG 3장 |
+| [대화캡쳐 및 실제검증 자료.md](./%EB%8C%80%ED%99%94%EC%BA%A1%EC%B3%90%20%EB%B0%8F%20%EC%8B%A4%EC%A0%9C%EA%B2%80%EC%A6%9D%20%EC%9E%90%EB%A3%8C.md) | AI 대화 3장과 실제 실행 검증 10장, 완성 기준별 확인 결과 |
+| [사진원본 폴더](./사진원본/) | AI 대화·수정 결과 3장 + 실제 실행 검증 10장(원본 PNG 총 13장) |
 | [챗지피티 기능추가 요청 스크린샷1.png](./사진원본/%EC%B1%97%EC%A7%80%ED%94%BC%ED%8B%B0%20%EA%B8%B0%EB%8A%A5%EC%B6%94%EA%B0%80%20%EC%9A%94%EC%B2%AD%20%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B71.png) | 최초 기능 추가 요청 대화 캡처 |
 | [챗지피티 기능추가수정 스크린샷2.png](./사진원본/%EC%B1%97%EC%A7%80%ED%94%BC%ED%8B%B0%20%EA%B8%B0%EB%8A%A5%EC%B6%94%EA%B0%80%EC%88%98%EC%A0%95%20%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B72.png) | 후속 수정 요청 대화 캡처 |
 | [챗지피티 기능추가수정 결과물 스크린샷3.png](./사진원본/%EC%B1%97%EC%A7%80%ED%94%BC%ED%8B%B0%20%EA%B8%B0%EB%8A%A5%EC%B6%94%EA%B0%80%EC%88%98%EC%A0%95%20%EA%B2%B0%EA%B3%BC%EB%AC%BC%20%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B73.png) | 수정된 결과물 화면 캡처 |
@@ -33,7 +33,7 @@
 
 ## 확인 자료와 복구 절차
 
-- 스크린샷 원본 3개와 미리보기·확인 범위: [대화캡쳐 및 실제검증 자료.md](./%EB%8C%80%ED%99%94%EC%BA%A1%EC%B3%90%20%EB%B0%8F%20%EC%8B%A4%EC%A0%9C%EA%B2%80%EC%A6%9D%20%EC%9E%90%EB%A3%8C.md)
+- 대화 스크린샷 3장과 완성 기준 1~10번 실제검증 화면 10장 및 확인 범위: [대화캡쳐 및 실제검증 자료.md](./%EB%8C%80%ED%99%94%EC%BA%A1%EC%B3%90%20%EB%B0%8F%20%EC%8B%A4%EC%A0%9C%EA%B2%80%EC%A6%9D%20%EC%9E%90%EB%A3%8C.md)
 - 기능 추가·수정 이유와 파일별 과정: [미션4_기록.md](./미션4_기록.md)
 - 원래 기능과 새 기능의 검증 기준: [기획서.md](./기획서.md)의 1~10번
 
@@ -72,6 +72,16 @@
 | [기획서.md](./%EA%B8%B0%ED%9A%8D%EC%84%9C.md) | MD |
 | [대화캡쳐 및 실제검증 자료.md](./%EB%8C%80%ED%99%94%EC%BA%A1%EC%B3%90%20%EB%B0%8F%20%EC%8B%A4%EC%A0%9C%EA%B2%80%EC%A6%9D%20%EC%9E%90%EB%A3%8C.md) | MD |
 | [미션4_기록.md](./%EB%AF%B8%EC%85%984_%EA%B8%B0%EB%A1%9D.md) | MD |
+| [사진원본/1.영화를 검색하고 포스터와 제목을 확인한 뒤 목록에 추가한다..png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/1.%EC%98%81%ED%99%94%EB%A5%BC%20%EA%B2%80%EC%83%89%ED%95%98%EA%B3%A0%20%ED%8F%AC%EC%8A%A4%ED%84%B0%EC%99%80%20%EC%A0%9C%EB%AA%A9%EC%9D%84%20%ED%99%95%EC%9D%B8%ED%95%9C%20%EB%92%A4%20%EB%AA%A9%EB%A1%9D%EC%97%90%20%EC%B6%94%EA%B0%80%ED%95%9C%EB%8B%A4..png) | PNG |
+| [사진원본/10파일 저장 버튼에서 현재 책갈피와 전체 책갈피를 선택해 각각 저장한다..png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/10%ED%8C%8C%EC%9D%BC%20%EC%A0%80%EC%9E%A5%20%EB%B2%84%ED%8A%BC%EC%97%90%EC%84%9C%20%ED%98%84%EC%9E%AC%20%EC%B1%85%EA%B0%88%ED%94%BC%EC%99%80%20%EC%A0%84%EC%B2%B4%20%EC%B1%85%EA%B0%88%ED%94%BC%EB%A5%BC%20%EC%84%A0%ED%83%9D%ED%95%B4%20%EA%B0%81%EA%B0%81%20%EC%A0%80%EC%9E%A5%ED%95%9C%EB%8B%A4..png) | PNG |
+| [사진원본/2.영화 카드를 각 등급으로 드래그해 이동한다..png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/2.%EC%98%81%ED%99%94%20%EC%B9%B4%EB%93%9C%EB%A5%BC%20%EA%B0%81%20%EB%93%B1%EA%B8%89%EC%9C%BC%EB%A1%9C%20%EB%93%9C%EB%9E%98%EA%B7%B8%ED%95%B4%20%EC%9D%B4%EB%8F%99%ED%95%9C%EB%8B%A4..png) | PNG |
+| [사진원본/3.영화 등급을 변경한 뒤 HTML을 다시 열어 기록이 유지되는지 확인한다.png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/3.%EC%98%81%ED%99%94%20%EB%93%B1%EA%B8%89%EC%9D%84%20%EB%B3%80%EA%B2%BD%ED%95%9C%20%EB%92%A4%20HTML%EC%9D%84%20%EB%8B%A4%EC%8B%9C%20%EC%97%B4%EC%96%B4%20%EA%B8%B0%EB%A1%9D%EC%9D%B4%20%EC%9C%A0%EC%A7%80%EB%90%98%EB%8A%94%EC%A7%80%20%ED%99%95%EC%9D%B8%ED%95%9C%EB%8B%A4.png) | PNG |
+| [사진원본/4.등급표를 PNG 이미지로 저장한다..png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/4.%EB%93%B1%EA%B8%89%ED%91%9C%EB%A5%BC%20PNG%20%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A1%9C%20%EC%A0%80%EC%9E%A5%ED%95%9C%EB%8B%A4..png) | PNG |
+| [사진원본/5.JSON 파일을 저장하고 다시 불러온다..png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/5.JSON%20%ED%8C%8C%EC%9D%BC%EC%9D%84%20%EC%A0%80%EC%9E%A5%ED%95%98%EA%B3%A0%20%EB%8B%A4%EC%8B%9C%20%EB%B6%88%EB%9F%AC%EC%98%A8%EB%8B%A4..png) | PNG |
+| [사진원본/6.서버와 로그인 없이 HTML 파일을 직접 실행.png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/6.%EC%84%9C%EB%B2%84%EC%99%80%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%97%86%EC%9D%B4%20HTML%20%ED%8C%8C%EC%9D%BC%EC%9D%84%20%EC%A7%81%EC%A0%91%20%EC%8B%A4%ED%96%89.png) | PNG |
+| [사진원본/7.브라우저 창을 좁혀도 화면이 잘리지 않는지 확인한다..png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/7.%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EC%B0%BD%EC%9D%84%20%EC%A2%81%ED%98%80%EB%8F%84%20%ED%99%94%EB%A9%B4%EC%9D%B4%20%EC%9E%98%EB%A6%AC%EC%A7%80%20%EC%95%8A%EB%8A%94%EC%A7%80%20%ED%99%95%EC%9D%B8%ED%95%9C%EB%8B%A4..png) | PNG |
+| [사진원본/8.검색창에 공백만 입력했을 때 안내 문구가 나오는지 확인한다..png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/8.%EA%B2%80%EC%83%89%EC%B0%BD%EC%97%90%20%EA%B3%B5%EB%B0%B1%EB%A7%8C%20%EC%9E%85%EB%A0%A5%ED%96%88%EC%9D%84%20%EB%95%8C%20%EC%95%88%EB%82%B4%20%EB%AC%B8%EA%B5%AC%EA%B0%80%20%EB%82%98%EC%98%A4%EB%8A%94%EC%A7%80%20%ED%99%95%EC%9D%B8%ED%95%9C%EB%8B%A4..png) | PNG |
+| [사진원본/9.책갈피를 2개 만들고 서로 다른 등급으로 영화를 배치한 후 각각 유지되는지 확인.png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/9.%EC%B1%85%EA%B0%88%ED%94%BC%EB%A5%BC%202%EA%B0%9C%20%EB%A7%8C%EB%93%A4%EA%B3%A0%20%EC%84%9C%EB%A1%9C%20%EB%8B%A4%EB%A5%B8%20%EB%93%B1%EA%B8%89%EC%9C%BC%EB%A1%9C%20%EC%98%81%ED%99%94%EB%A5%BC%20%EB%B0%B0%EC%B9%98%ED%95%9C%20%ED%9B%84%20%EA%B0%81%EA%B0%81%20%EC%9C%A0%EC%A7%80%EB%90%98%EB%8A%94%EC%A7%80%20%ED%99%95%EC%9D%B8.png) | PNG |
 | [사진원본/챗지피티 기능추가 요청 스크린샷1.png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/%EC%B1%97%EC%A7%80%ED%94%BC%ED%8B%B0%20%EA%B8%B0%EB%8A%A5%EC%B6%94%EA%B0%80%20%EC%9A%94%EC%B2%AD%20%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B71.png) | PNG |
 | [사진원본/챗지피티 기능추가수정 결과물 스크린샷3.png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/%EC%B1%97%EC%A7%80%ED%94%BC%ED%8B%B0%20%EA%B8%B0%EB%8A%A5%EC%B6%94%EA%B0%80%EC%88%98%EC%A0%95%20%EA%B2%B0%EA%B3%BC%EB%AC%BC%20%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B73.png) | PNG |
 | [사진원본/챗지피티 기능추가수정 스크린샷2.png](./%EC%82%AC%EC%A7%84%EC%9B%90%EB%B3%B8/%EC%B1%97%EC%A7%80%ED%94%BC%ED%8B%B0%20%EA%B8%B0%EB%8A%A5%EC%B6%94%EA%B0%80%EC%88%98%EC%A0%95%20%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B72.png) | PNG |
